@@ -54,6 +54,7 @@ public class ListCondition<T> implements Serializable {
         if (Objects.isNull(wrapper) || CollectionUtils.isEmpty(orderList)) {
             return this;
         }
+        // TODO: SQL注入屏蔽
         orderList.forEach(orderItem -> {
             if (Objects.nonNull(orderItem) && StringUtils.isNotBlank(orderItem.getColumn())) {
                 wrapper.orderBy(
@@ -76,6 +77,7 @@ public class ListCondition<T> implements Serializable {
      */
     public ListCondition<T> addFiledList(QueryWrapper queryWrapper) {
         if (CollectionUtils.isNotEmpty(orderList) && Objects.isNull(queryWrapper)) {
+            // TODO: SQL注入屏蔽
             queryWrapper.select(filedList.stream()
                     .filter(StringUtils::isNotBlank)
                     .map(item -> CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, item))
