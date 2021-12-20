@@ -23,3 +23,7 @@
 hs_err_pid*
 
 *.idea
+
+
+# 代码生成器
+CodeGeneratorConfig.java
